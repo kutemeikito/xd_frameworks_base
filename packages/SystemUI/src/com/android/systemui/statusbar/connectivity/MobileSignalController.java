@@ -97,7 +97,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
     private final String mNetworkNameDefault;
     private final String mNetworkNameSeparator;
     private final ContentObserver mObserver;
-    private final boolean mProviderModelBehavior;
+    private boolean mProviderModelBehavior;
     private final boolean mProviderModelSetting;
     private final Handler mReceiverHandler;
     private int mImsType = IMS_TYPE_WWAN;
@@ -337,6 +337,10 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
         mConfig = Config.readConfig(mContext);
         setConfiguration(mConfig);
         notifyListeners();
+    }
+
+    private void restartSystemUI() {
+       android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     void setConfiguration(Config config) {
