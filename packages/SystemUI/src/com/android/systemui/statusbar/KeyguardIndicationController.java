@@ -927,7 +927,7 @@ public class KeyguardIndicationController {
                 batteryInfo = batteryInfo + current + "mA";
             }
             if (mChargingVoltage > 0 && mChargingCurrent > 0) {
-                voltage = (mChargingVoltage / 1000 / 1000);
+                voltage = (mChargingVoltage /1000);
                 batteryInfo = (batteryInfo == "" ? "" : batteryInfo + " · ") +
                         String.format("%.1f" , ((double) current / 1000) * voltage) + "W";
             }
